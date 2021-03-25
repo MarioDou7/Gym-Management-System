@@ -1,4 +1,4 @@
-package Project;
+package src.Gym_Management_System;
 
 import java.util.Scanner;
 
@@ -21,7 +21,7 @@ public abstract class auothority {
         this.Address   = Address;
         for (int i = 0; i < 3; i++)
         {
-            if(phone[i] == 0)
+            if(phone[i] == null)
             {
                 phone[i] = PhoneNumber;
             }

@@ -1,2 +1,0 @@
-when you add ssn manually you might override a member 
-applying desgin pattern to the project

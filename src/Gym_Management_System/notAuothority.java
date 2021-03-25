@@ -1,4 +1,4 @@
-package Project;
+package src.Gym_Management_System;
 
 public abstract class notAuothority {
     String Name;

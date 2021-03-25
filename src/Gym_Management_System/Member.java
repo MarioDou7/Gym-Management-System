@@ -1,4 +1,4 @@
-package Project;
+package src.Gym_Management_System;
 
 import java.util.Arrays;
 
