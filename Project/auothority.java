@@ -6,7 +6,7 @@ public abstract class auothority {
     Scanner sc = new Scanner(System.in);
     static Session []SessionsArray = new Session[10];
     static Member[] MembersArray = new Member[10];
-    int []phone = new int[3];
+    String []phone = new String[3];
     int    SSN;
     int Salary;
     String Hire_Date;
@@ -14,7 +14,7 @@ public abstract class auothority {
     String Sex;
     String Address;
 
-    public auothority(String Name, int SSN, String Sex, String Address, int PhoneNumber, int Salary, String Hire_Date){
+    public auothority(String Name, int SSN, String Sex, String Address, String PhoneNumber, int Salary, String Hire_Date){
         this.Name      = Name;
         this.SSN       = SSN;
         this.Sex       = Sex;

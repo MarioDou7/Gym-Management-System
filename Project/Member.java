@@ -6,12 +6,12 @@ public class Member extends notAuothority{
     String MemberShip;
     Double weight;
     
-    public Member(String Name, int SSN, String Sex, String Address, int PhoneNumber, String memberShip, Double weight){
+    public Member(String Name, int SSN, String Sex, String Address, String PhoneNumber, String memberShip, Double weight){
         super(Name, SSN, Sex, Address, PhoneNumber);
         this.MemberShip = memberShip;
         this.weight = weight;
     }
-    public Member(String Name, String Sex, String Address, int PhoneNumber, String memberShip, Double weight,Member []members){
+    public Member(String Name, String Sex, String Address, String PhoneNumber, String memberShip, Double weight,Member []members){
         super(Name, Sex, Address, PhoneNumber);
         this.MemberShip = memberShip;
         this.weight = weight;

@@ -3,9 +3,10 @@ package Project;
 import java.util.Scanner;
 
 public class Employee extends auothority{
+    boolean isFound;
     Scanner scan = new Scanner(System.in);
     
-    public Employee(String Name, int Salary, int SSN, String Sex, String Address, int PhoneNumber, String Hire_Date){
+    public Employee(String Name, int Salary, int SSN, String Sex, String Address, String PhoneNumber, String Hire_Date){
         super(Name, SSN, Sex, Address, PhoneNumber, Salary, Hire_Date);
     }
 
@@ -13,7 +14,7 @@ public class Employee extends auothority{
         String Name;
         String Sex;
         String Address;
-        int phoneNumber;
+        String phoneNumber;
         String MemberShip;
         Double weight;
         Member member;
@@ -25,7 +26,7 @@ public class Employee extends auothority{
         System.out.printf("Address: ");
         Address = scan.next();
         System.out.printf("PhoneNumber: ");
-        phoneNumber = scan.nextInt();
+        phoneNumber = scan.next();
         System.out.printf("MemberShip: ");
         MemberShip = scan.next();
         System.out.printf("Weight: ");
@@ -42,11 +43,14 @@ public class Employee extends auothority{
         String Name;
         String Sex;
         String Address;
-        int phoneNumber;
+        String phoneNumber;
         String MemberShip;
         Double weight;
         boolean Done = false;
+        isFound = false;
         for (Member member : MembersArray) {
+            if(member == null)
+                continue;
             if(member.SSN == MemberID){
                 System.out.println(member);
                 System.out.println("Choose which element would you like to edit:");
@@ -83,7 +87,7 @@ public class Employee extends auothority{
                             break;
                         case 4:
                             System.out.printf("Enter the new PhoneNumber: ");
-                            phoneNumber = scan.nextInt();
+                            phoneNumber = scan.next();
                             System.out.printf("Enter the index of the phoneNumber(1/2/3): ");
                             int index = scan.nextInt();
                             member.phone[index] = phoneNumber;
@@ -107,39 +111,51 @@ public class Employee extends auothority{
 
                 }
             }
-            else{
-                System.out.println("There is no Trainer with this ID in our System");
-            }
         }
+        if(isFound == false)
+            System.out.println("There is no Member with this ID in our System");
     }
     public void RemoveMember_System(int MemberID){
-        for (Member member : MembersArray) {
+        isFound = false;
+        for (Member member : MembersArray) 
+        {   if(member == null)
+              continue;
             if(member.SSN == MemberID){
+                
+                isFound = true;
                 removeValue(MembersArray, member);
                 System.out.println("The Member is removed successfully");
-
             }
-            else{
-                System.out.println("I couldn't find this Member in our System");
-                
-            }
+            
         }
+        if(isFound == false )
+             System.out.println("I couldn't find this Member in our System");
     }
     public void AddMember_Session(String date,Member member){
-        for (Session session : SessionsArray) {
-            if(session.date.equals(date)){
+        isFound = false;
+        for (Session session : SessionsArray) 
+        {   if(session == null)
+              continue;
+            if(session.date.equals(date))
+            {   
+                isFound = true;
                 appendValue(session.members_in_Session, member);
             }
         }
-        System.out.println(member+"is added to the session");
+        if(isFound == false)
+            System.out.println("No Session in this date recorded");
     }
     public void RemoveMember_Session(String date,Member member){
+        isFound = false;
         for (Session session : SessionsArray) {
+            if(session == null)
+                continue;
             if(session.date.equals(date)){
+                isFound = true;
                 removeValue(session.members_in_Session, member);
             }
         }
-        System.out.println("we have remove the member from the session");
-
+        if(isFound == true)
+           System.out.println("No Session in this date recorded");
     }
 }

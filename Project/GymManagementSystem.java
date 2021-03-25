@@ -7,11 +7,11 @@ public class GymManagementSystem {
 
     
     public static void main(String[] args) {
-        Adminstrator A1 = new Adminstrator("Loka", 17000, 2065, "Male", "Nasr City", 1523945, "12-5-2010");
-        Employee E1 = new Employee("Dou7", 14000, 8477, "Male", "El7mamat", 89828978, "27-6-2012");
-        Trainer T1 = new Trainer("Mazen", 3455, "Male", "Shobra", 38942871, 3000);
-        Member M1 = new Member("Michael", 7939, "Male", "Shobra", 23789848, "PAYG", 65.5);
-        Session S1 = new Session("High Intensity Session", "Weight Lifting", "30-12-2020");
+        Adminstrator A1 = new Adminstrator("Loka", 17000, 2065, "Male", "Nasr City", "1523945", "12-5-2010");
+        Employee     E1 = new Employee("Dou7", 14000, 8477, "Male", "El7mamat", "89828978", "27-6-2012");
+        Trainer      T1 = new Trainer("Mazen", 3455, "Male", "Shobra", "38942871", 3000);
+        Member       M1 = new Member("Michael", 7939, "Male", "Shobra", "23789848", "PAYG", 65.5);
+        Session      S1 = new Session("High Intensity Session", "Weight Lifting", "30-12-2020");
         Adminstrator.TrainersArray[0] = T1;
         auothority.SessionsArray[0] = S1;
         auothority.MembersArray [0] = M1;
