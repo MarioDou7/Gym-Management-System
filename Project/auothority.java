@@ -21,7 +21,7 @@ public abstract class auothority {
         this.Address   = Address;
         for (int i = 0; i < 3; i++)
         {
-            if(phone[i] == null)
+            if(phone[i] == 0)
             {
                 phone[i] = PhoneNumber;
             }
