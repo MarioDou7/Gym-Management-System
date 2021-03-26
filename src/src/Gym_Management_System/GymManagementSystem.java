@@ -9,8 +9,8 @@ public class GymManagementSystem {
     public static void main(String[] args) {
         Adminstrator A1 = new Adminstrator("Loka", 17000, 2065, "Male", "Nasr City", "1523945", "12-5-2010");
         Employee     E1 = new Employee("Dou7", 14000, 8477, "Male", "El7mamat", "89828978", "27-6-2012");
-        Trainer      T1 = new Trainer("Mazen", 3455, "Male", "Shobra", "38942871", 3000);
-        Member       M1 = new Member("Michael", 7939, "Male", "Shobra", "23789848", "PAYG", 65.5);
+        Trainer      T1 = new Trainer("Mazen", 3455, "Male", "Shobra", "01121260503", 3000);
+        Member       M1 = new Member("Michael", 7939, "Male", "Shobra", "01096888803", "PAYG", 65.5);
         Session      S1 = new Session("High Intensity Session", "Weight Lifting", "30-12-2020");
         Adminstrator.TrainersArray[0] = T1;
         auothority.SessionsArray[0] = S1;
@@ -25,8 +25,9 @@ public class GymManagementSystem {
         int Member_Id;
         int choice;
         boolean Done = false;
+        boolean isFound ;
         
-        
+        while(true){
         System.out.println("-------- Gym ManagmentSystem --------");
         System.out.printf("Username: ");
         username = scan.next();
@@ -36,7 +37,7 @@ public class GymManagementSystem {
         if(username.equals("admin") && password.equals("admin")){
             System.out.println("---------------------------------");
             System.out.println("---------------------------------");
-            System.out.println("------- Welcome Admin -------");
+            System.out.println("-------- Welcome Admin ----------");
             System.out.println("---------------------------------");
             System.out.println("Choose what you want to do:");
             System.out.println("Enter 0 when you are Done");
@@ -88,11 +89,7 @@ public class GymManagementSystem {
                         A1.RemoveSession( SessionDate);
                         break;
                     case 7:
-                        System.out.println("Enter Trainer Id: ");
-                        Trainer_Id = scan.nextInt();
-                        System.out.println("Enter Memeber Id: ");
-                        Member_Id = scan.nextInt();
-                        A1.AssginTrainer_Member(Trainer_Id, Member_Id);
+                        A1.AssginTrainer_Member();
                         break; 
                     case 8:
                         System.out.println("Enter the membership type: ");
@@ -116,7 +113,7 @@ public class GymManagementSystem {
         else if(username.equals("employee") && password.equals("12345")){
             System.out.println("---------------------------------");
             System.out.println("---------------------------------");
-            System.out.println("-------- Welcome Employee --------");
+            System.out.println("------- Welcome Employee --------");
             System.out.println("---------------------------------");
             System.out.println("Choose what you want to do:");
             System.out.println("Enter 0 when you are Done");
@@ -153,28 +150,40 @@ public class GymManagementSystem {
                         E1.RemoveMember_System( Member_Id);
                         break;
                     case 4:
+                        isFound = false;
                         System.out.println("Enter Session Date: ");
                         SessionDate = scan.next();
                         System.out.println("Enter MemberID: ");
                         Member_Id = scan.nextInt();
                         for (Member member : auothority.MembersArray) {
+                            if(member == null)
+                                continue;
                             if(member.SSN == Member_Id){
+                                isFound = true;
                                 E1.AddMember_Session(SessionDate, member);
                                 break;
                             }
                         }
+                        if(isFound == false)
+                            System.out.println("No Members Found with this ID");
                         break;                        
                     case 5:
+                        isFound = false ;
                         System.out.println("Enter Session Date: ");
                         SessionDate = scan.next();
                         System.out.println("Enter MemberID: ");
                         Member_Id = scan.nextInt();
                         for (Member member : auothority.MembersArray) {
+                            if(member == null)
+                                continue;
                             if(member.SSN == Member_Id){
+                                isFound = true;
                                 E1.RemoveMember_Session(SessionDate, member);
                                 break;
                             }
                         }
+                        if(isFound == false)
+                            System.out.println("No Member Found with this ID");
                         break;      
                     case 6:
                         System.out.println("Enter the membership type: ");
@@ -198,4 +207,5 @@ public class GymManagementSystem {
         else
             System.out.println("Wrong credentials");
     }
+    } 
 }

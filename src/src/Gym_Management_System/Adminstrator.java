@@ -36,6 +36,9 @@ public class Adminstrator extends auothority {
 
         trainer = new Trainer(Name, Sex, Address, phoneNumber, Salary,TrainersArray);
         appendValue(TrainersArray, trainer);
+        System.out.println("---------------------------------");
+        System.out.println(trainer);
+        System.out.println("---------------------------------");
         System.out.println("Trainer Added successfully");
         System.out.println("---------------------------------");
 
@@ -55,7 +58,9 @@ public class Adminstrator extends auothority {
                 continue;
             if(trainer.SSN == TrainerID){
                 isFound = true;
+                System.out.println("--------------------------");
                 System.out.println(trainer);
+                System.out.println("--------------------------");
                 System.out.println("Choose which element would you like to edit:");
                 System.out.println("Enter 0 when you are Done");
                 System.out.println("1: Name");
@@ -92,7 +97,7 @@ public class Adminstrator extends auothority {
                             phoneNumber = scan.next();
                             System.out.printf("Enter the index of the phoneNumber(1/2/3): ");
                             int index = scan.nextInt();
-                            trainer.phone[index] = phoneNumber;
+                            trainer.phone[index-1] = phoneNumber;
                             break;                        
                         case 5:
                             System.out.printf("Enter the new Salary: ");
@@ -130,9 +135,7 @@ public class Adminstrator extends auothority {
                 System.out.println("Trainer is removed successfully");
                 break;
             }
-            else{
-                System.out.println("I couldn't find this Trainer in our System");
-            }
+            
         }
         if(isFound==false)
             System.out.println("There is no Trainer with this ID in our System");
@@ -166,7 +169,9 @@ public class Adminstrator extends auothority {
 
             if(session.date.equals(date)){
                 isFound = true;
+                System.out.println("---------------------------------");
                 System.out.println(session);
+                System.out.println("---------------------------------");
                 System.out.println("Choose which element would you like to edit:");
                 System.out.println("Enter 0 when you are Done");
                 System.out.println("1: description");
@@ -205,10 +210,7 @@ public class Adminstrator extends auothority {
 
                 }
             } 
-            if(isFound == true)
-            {
-                break;
-            }
+            
         }
         if(isFound == false)
             System.out.println("There is no Session in that day");
@@ -227,7 +229,7 @@ public class Adminstrator extends auothority {
         if(isFound==false)
             System.out.println("I couldn't find this Session in our System");
     }
-    public int AssginTrainer_Member(int TrainerID,int MemberID){
+    public int AssginTrainer_Member(){
         int trainer_num    = 0;
         int member_num     = 0;
         int num_of_members = 0;
@@ -274,18 +276,22 @@ public class Adminstrator extends auothority {
         System.out.printf("Trainer Number: ");
         trainer_num = scan.nextInt();
         
-        System.out.println("How many Members Do you want to assgin them to the Trainer: "+TrainersArray[trainer_num].Name);
+        System.out.println("How many Members Do you want to assgin them to the Trainer: "+TrainersArray[trainer_num-1].Name);
         System.out.printf("Number of Members: ");
         num_of_members = scan.nextInt();
         
-        System.out.print("Enter the Number of Member you want to assign the Trainer to");
+        System.out.println("Enter the Number of Member you want to assign the Trainer to");
         for(int i = 0 ; i<num_of_members;i++)
         {
             System.out.printf("Member Number: ");
             member_num = scan.nextInt();
             appendValue(TrainersArray[trainer_num-1].Supervise, MembersArray[member_num-1]);
         }
-        System.out.println(MembersArray[member_num]+"is assigned to "+TrainersArray[trainer_num]);
+        System.out.println(MembersArray[member_num-1]);
+        System.out.println("---------------");
+        System.out.println("is assigned to:");
+        System.out.println("---------------");
+        System.out.println(TrainersArray[trainer_num-1]);
         System.out.println("---------------------------------");
         return 0;
 

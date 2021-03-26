@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public abstract class auothority {
     Scanner sc = new Scanner(System.in);
+    boolean isFound ;
     static Session []SessionsArray = new Session[10];
     static Member[] MembersArray = new Member[10];
     String []phone = new String[3];
@@ -31,32 +32,51 @@ public abstract class auothority {
     }
 
     protected void Members_of_session(String date){
-        System.out.println("Enter Session date: ");
-        date = sc.next();
-        for (Session Session : auothority.SessionsArray) {
-            if(Session.date == date){
+        
+        isFound = false;
+        for (Session Session : auothority.SessionsArray) 
+        {
+            if(Session == null)
+                continue;
+            if(Session.date.equals(date))
+            {   isFound = true;
                 Session.display_membersInSession();
                 break;
             }
         }
+        if(isFound == false)
+            System.out.println("No Sessions in that date");
     }
 
-    protected void Members_of_membership(String type){
-        System.out.println("Enter the Membership type: ");
-        type = sc.next();
-        for (Member member : MembersArray) {
-            if(member.MemberShip == type){
+    protected void Members_of_membership(String type)
+    {
+        
+        isFound = false;
+        for (Member member : MembersArray) 
+        {
+            if(member == null)
+                continue;
+            if(member.MemberShip.equals(type)){
+                isFound = true;
                 System.out.println(member);
             }
         }
+        if(isFound == false)
+            System.out.println("No Members with this Membership");
     }
 
     protected void ViewMembers_info(Member[] members){
+         isFound = false;
         for (Member member : members) {
+            if(member == null)
+                continue;
             if (member != null) {
+                isFound = true ;
                 System.out.println(member);
             }
         }
+        if(isFound == false)
+            System.out.println("No Members Found");
     }
     protected void appendValue(Object[] Objects,Object Object){
         for (int i = 0 ; i<10; i++) {
@@ -68,7 +88,8 @@ public abstract class auothority {
 
     }
     protected void removeValue(Object[] Objects,Object Object){
-        for (int i = 0 ; i<10; i++) {
+        for (int i = 0 ; i<10; i++) 
+        {    
             if(Objects[i] == Object){
                 Objects[i] = null;
                 break;

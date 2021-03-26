@@ -27,7 +27,7 @@ public class Member extends notAuothority{
     public String toString(){
         return "------------------"+
                 "\nName:        "+ Name+
-                "\nSSN:         "+ SSN+
+                "\nMemberID:     "+ SSN+
                 "\nSex:         "+ Sex+
                 "\nAddress:     "+ Address+
                 "\nMemberShip:  "+ MemberShip+

@@ -7,6 +7,7 @@ public class Session {
     String description;
     String type;
     String date;
+    boolean isFound;
 
     public Session(String description, String type, String date){
         this.description = description;
@@ -15,12 +16,21 @@ public class Session {
     }
 
     public void display_membersInSession(){
+          isFound = false;
         for (Member member : members_in_Session) {
-            if (member != null) {
+            if(member == null)
+                continue;
+            if (member != null) 
+            {    
+                isFound = true;
                 System.out.println(member);
             }
         }
+        if(isFound == false)
+            System.out.println("No Members recorded in this Session");
+        
     }
+    @Override
     public String toString(){
         return "description: "+description +"   Type: "+type;
     }

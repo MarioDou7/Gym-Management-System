@@ -34,6 +34,9 @@ public class Employee extends auothority{
 
         member = new Member(Name, Sex, Address, phoneNumber, MemberShip, weight,MembersArray);
         appendValue(MembersArray, member);
+        System.out.println("---------------------------------");
+        System.out.println(member);
+        System.out.println("---------------------------------");
         System.out.println("Member added successfully");
         System.out.println("---------------------------------");
 
@@ -52,7 +55,10 @@ public class Employee extends auothority{
             if(member == null)
                 continue;
             if(member.SSN == MemberID){
+                isFound = true;
+                System.out.println("-------------------");
                 System.out.println(member);
+                System.out.println("-------------------");
                 System.out.println("Choose which element would you like to edit:");
                 System.out.println("Enter 0 when you are Done");
                 System.out.println("1: Name");
@@ -113,7 +119,7 @@ public class Employee extends auothority{
             }
         }
         if(isFound == false)
-            System.out.println("There is no Member with this ID in our System");
+            System.out.println("There is no Member with this ID in  the System");
     }
     public void RemoveMember_System(int MemberID){
         isFound = false;
@@ -140,6 +146,7 @@ public class Employee extends auothority{
             {   
                 isFound = true;
                 appendValue(session.members_in_Session, member);
+                System.out.println("Member is Added to the Session");
             }
         }
         if(isFound == false)
@@ -153,9 +160,10 @@ public class Employee extends auothority{
             if(session.date.equals(date)){
                 isFound = true;
                 removeValue(session.members_in_Session, member);
+                System.out.println("Member is Removed from Session");
             }
         }
-        if(isFound == true)
+        if(isFound == false)
            System.out.println("No Session in this date recorded");
     }
 }
