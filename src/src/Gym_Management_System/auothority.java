@@ -1,4 +1,4 @@
-package src.Gym_Management_System;
+package src.src.Gym_Management_System;
 
 import java.util.Scanner;
 
